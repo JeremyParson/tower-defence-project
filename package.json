@@ -1,0 +1,26 @@
+{
+  "name": "tower-defence",
+  "version": "1.0.0",
+  "description": "tower defence browser game",
+  "main": "main.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "start": "node main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JeremyParson/tower-defence.git"
+  },
+  "keywords": [
+    "game",
+    "towerdefence"
+  ],
+  "author": "Jeremy",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JeremyParson/tower-defence/issues"
+  },
+  "homepage": "https://github.com/JeremyParson/tower-defence#readme"
+}

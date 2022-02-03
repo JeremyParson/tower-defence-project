@@ -1,7 +1,6 @@
 class SidebarComponent extends Component {
   constructor(state) {
     super(state);
-    this.name = "sidebar_component";
   }
 
   render(state) {
@@ -16,6 +15,7 @@ class SidebarComponent extends Component {
 class GameComponent extends Component {
   constructor(state) {
     super(state);
+    this.state = {...{points: 0}, ...this.state}
   }
 
   render(state) {
@@ -56,7 +56,7 @@ class ShopComponent extends Component {
   }
 
   render(state) {
-    let template = `<div class="interface sidebar">
+    let template = `<div class="interface sidebar scroll">
             <h1>Tower Shop</h1>`;
     for (let tower_name in state) {
       let tower = state[tower_name];
@@ -84,6 +84,7 @@ class ShopComponent extends Component {
 class PlaceTowerComponent extends Component {
   constructor(state) {
     super(state);
+    this.state = {...{tower_name: "nil"}, ...this.state}
   }
 
   render(state) {

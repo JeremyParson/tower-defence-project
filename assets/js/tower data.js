@@ -47,7 +47,33 @@ let tower_data = {
       },
       {
         upgrade: { cool_down: 1000, range: 4 },
-        cost: 100,
+        cost: 200,
+      },
+    ],
+  },
+  "Sniper Tower": {
+    name: "Sniper Tower",
+    damage: 4,
+    range: 8,
+    cool_down: 3000,
+    cost: 200,
+    shape: {
+      type: "square",
+      color: [255, 255, 0],
+      length: 15,
+    },
+    upgrades: [
+      {
+        upgrade: { damage: 6 },
+        cost: 50,
+      },
+      {
+        upgrade: { range: 10 },
+        cost: 50,
+      },
+      {
+        upgrade: { cool_down: 2000, range: 15 },
+        cost: 250,
       },
     ],
   },

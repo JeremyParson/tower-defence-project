@@ -112,6 +112,7 @@ const p5GameInstance = (p) => {
   };
 
   p.mousePressed = () => {
+    if (selected_tower) selected_tower.selected = false;
     // get selection location
     let position = [mouseX, mouseY]
     position = vect_div(position, grid_cell_size)
@@ -120,6 +121,7 @@ const p5GameInstance = (p) => {
     let tower = towers.filter(tw => vect_equal(tw.position, position))
     if (!tower.length) return;
     selected_tower = tower[0]
+    selected_tower.selected = true;
     // determine if tower is upgradable
     let upgradable = selected_tower.is_upgradable()
     // create state for upgrade component
@@ -254,5 +256,6 @@ function upgrade_tower() {
   if (upgradable) 
     data = {...data, ...{cost: selected_tower.get_upgrade_cost(), upgrade: selected_tower.get_upgrade_as_string()}}
   base_upgrade_component.set_state(data)
+  game_component.set_state({points: points})
   app.updateView()
 }

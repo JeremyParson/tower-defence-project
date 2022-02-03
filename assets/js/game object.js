@@ -109,11 +109,16 @@ class Tower extends GameObject {
     this.current_cool_down = 0;
     this.level = 1;
     this.stats = tower_stats;
+    this.selected = false;
   }
 
   render() {
     let render_position = vect_mult(this.position, this.cell_size);
     render_position = vect_add(render_position, this.half_cell);
+    if (this.selected) {
+      fill(252, 186, 3);
+      circle(...render_position, 30);
+    }
     // select fill color
     fill(...this.stats.shape.color);
     // pick shape to render

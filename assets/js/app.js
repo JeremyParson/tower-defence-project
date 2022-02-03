@@ -39,4 +39,8 @@ class App {
     connect_canvas(canvas) {
       this.canvas = canvas
     }
+
+    disconnect_canvas() {
+      this.canvas = null;
+    }
   }

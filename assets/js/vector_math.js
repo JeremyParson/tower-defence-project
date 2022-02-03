@@ -30,3 +30,6 @@ function vect_floor(v) {
   return v.map((x, i) => Math.floor(x))
 }
 
+function vect_equal(x, y) {
+  return JSON.stringify(x) == JSON.stringify(y);
+}

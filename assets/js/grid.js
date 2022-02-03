@@ -97,6 +97,7 @@ class Grid {
   }
 
   get_value(array, position) {
+    if (position[0] < 0 || position[0] > this.grid.length || position[1] < 0 || position[1] > this.grid[0].length) return Infinity;
     return array[position[0]][position[1]];
   }
 
@@ -108,8 +109,8 @@ class Grid {
       [-1, 0],
       [1, 0],
     ];
-    let best_position = [-1, -1]
-    let prev_step = Infinity
+    let best_position = [-1, -1];
+    let prev_step = Infinity;
     for (let direction of directions) {
       let next_position = vect_add(position, direction)
       let current_step = this.get_value(this.grid, next_position)

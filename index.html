@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="0viewport" content="width=device-width, initial-scale=1.0">
     <!-- production -->
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js" integrity="sha512-N4kV7GkNv7QR7RX9YF/olywyIgIwNvfEe2nZtfyj73HdjCUkAfOBDbcuJ/cTaN04JKRnw1YG1wnUyNKMsNgg3g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
     <!-- debug -->
@@ -39,6 +39,14 @@
         justify-content: center;
     }
 
+    #game-over {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+        justify-content: center;
+    }
+
     #main-menu > button {
         height: 2em;
     }
@@ -59,13 +67,18 @@
         background-color: #1d2951;
     }
 </style>
-
+<!-- Math -->
+<script src="assets/js/vector_math.js"></script>
+<!-- Data files -->
+<script src="assets/js/tower data.js"></script>
+<script src="assets/js/enemy roster.js"></script>
+<!-- Components -->
 <script src="assets/js/app.js"></script>
 <script src="assets/js/component/component.js"></script>
 <script src="assets/js/component/game interface.js"></script>
-<script src="assets/js/tower data.js"></script>
+<!-- Game -->
 <script src="assets/js/game object.js"></script>
-<script src="assets/js/vector_math.js"></script>
+<script src="assets/js/enemy manager.js"></script>
 <script src="assets/js/grid.js"></script>
 <script src="main.js"></script>
 </html>

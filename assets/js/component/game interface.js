@@ -21,7 +21,10 @@ class GameComponent extends Component {
   render(state) {
     return `<div class="game-panel">
         <div id="game-canvas"></div>
-        <div class="game-stats"></div>
+        <div class="game-stats">
+          <p>Base Health: </p><progress value="${state.health}" max="${state.max_health}"></progress>
+          <p>Points: ${state.points}<p>
+        </div>
     </div>`;
   }
 
@@ -91,5 +94,55 @@ class PlaceTowerComponent extends Component {
 
   as_text() {
     return "shop_component";
+  }
+}
+
+class UpgradesComponent extends Component {
+  constructor(state) {
+    super(state);
+    this.state = {...{selected: false}, ...state}
+  }
+
+  render (state) {
+    let template = "<div class='interface sidebar'>"
+    // tower selected section
+    template += `<div>${state.selected ?
+    `<h2>${state.name}</h2>
+      ${state.upgradable ? 
+        `<p>${state.upgrade}</p>
+        <button onclick="upgrade_tower()">
+        upgrade tower for ${state.cost} points.</button>` 
+      : `This tower cannot be upgraded`}
+    `:
+    `<p>Select a tower for info</p>`}
+    <div>`
+
+    // base upgrade section
+
+    // wave started button
+    template += `<div>${state.started ? 'wave started' : 
+    `<button onclick="start_wave()">Start Wave ${state.wave}</button>`}
+    </div>`
+    
+    template += '</div>'
+    return template;
+  }
+
+  as_text() {
+    return "upgrade_component";
+  }
+}
+
+class GameOver extends Component {
+  constructor(state) {
+    super(state);
+  }
+
+  render(state) {
+    return `<div id="game-over">Game Over!</div>`
+  }
+
+  as_text() {
+    return "game_over_component";
   }
 }

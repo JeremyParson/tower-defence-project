@@ -1,0 +1,58 @@
+let enemy_roster_data = [
+  {
+    name: "minion",
+    difficulty: 0,
+    cost: 50,
+    health: 4,
+    damage: 1,
+    speed: 0.025,
+    points: 25,
+    shape: {
+      type: "circle",
+      radius: 20,
+      color: [255, 0, 0],
+    },
+  },
+  {
+    name: "tank",
+    difficulty: 3,
+    cost: 100,
+    health: 10,
+    damage: 1,
+    speed: 0.02,
+    points: 50,
+    shape: {
+      type: "circle",
+      radius: 25,
+      color: [255, 0, 0],
+    },
+  },
+  {
+    name: "runner",
+    difficulty: 6,
+    cost: 125,
+    health: 3,
+    damage: 2,
+    speed: 0.05,
+    points: 50,
+    shape: {
+      type: "circle",
+      radius: 15,
+      color: [255, 0, 0],
+    },
+  },
+  {
+    name: "guardian",
+    difficulty: 10,
+    cost: 200,
+    health: 15,
+    damage: 15,
+    speed: 0.025,
+    points: 100,
+    shape: {
+      type: "square",
+      length: 20,
+      color: [255, 0, 0],
+    },
+  },
+];

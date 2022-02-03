@@ -15,11 +15,13 @@ class GameObject {
 }
 
 class Enemy extends GameObject {
-  constructor(position, cell_size, radius = 20) {
+  constructor(stats, position, cell_size) {
     super(position, cell_size);
-    this.health = 15;
-    this.radius = radius;
-    this.move_speed = 0.02;
+    this.stats = {...stats};
+  }
+
+  set_stats(stats) {
+    this.stats = { ...this.stats, ...copy };
   }
 
   move(grid) {
@@ -29,23 +31,38 @@ class Enemy extends GameObject {
     this.position = vect_lerp(
       [...this.position],
       move_position,
-      this.move_speed
+      this.stats.speed
     );
   }
 
   render() {
+    // calculate render_position
     let render_position = vect_mult(this.position, this.cell_size);
     render_position = vect_add(render_position, this.half_cell);
-    fill(255, 0, 0);
-    circle(...render_position, this.radius);
+    // select fill color
+    fill(...this.stats.shape.color);
+    // pick shape to render
+    switch (this.stats.shape.type) {
+      case "circle":
+        circle(...render_position, this.stats.shape.radius);
+      case "square":
+        render_position = vect_add(render_position, [-10, -10])
+        rect(...render_position, this.stats.shape.length, this.stats.shape.length);
+    }
   }
 
   is_dead() {
-    return this.health < 1;
+    return this.stats.health < 1;
+  }
+
+  reached_goal(goal_position) {
+    let distance = vect_sub(this.position, goal_position);
+    distance = abs(vect_length(distance));
+    return distance < 0.1;
   }
 
   hit(damage) {
-    this.health -= damage;
+    this.stats.health -= damage;
   }
 }
 
@@ -91,15 +108,22 @@ class Tower extends GameObject {
     this.cool_down = 500;
     this.current_cool_down = 0;
     this.level = 1;
-    this.firing_range = 5;
     this.stats = tower_stats;
   }
 
   render() {
     let render_position = vect_mult(this.position, this.cell_size);
-    render_position = vect_add(render_position, [2, 2]);
-    fill(75, 75, 255);
-    rect(...render_position, 20, 20);
+    render_position = vect_add(render_position, this.half_cell);
+    // select fill color
+    fill(...this.stats.shape.color);
+    // pick shape to render
+    switch (this.stats.shape.type) {
+      case "circle":
+        circle(...render_position, this.stats.shape.radius);
+      case "square":
+        render_position = vect_add(render_position, [-10, -10])
+        rect(...render_position, this.stats.shape.length, this.stats.shape.length);
+    }
   }
 
   shoot_enemy(enemies) {
@@ -135,8 +159,29 @@ class Tower extends GameObject {
     );
   }
 
+  get_upgrade_as_string () {
+    let template = ""
+    for (let mod in this.stats.upgrades[0].upgrade) {
+      template += `${mod} ${this.stats[mod]}->${this.stats.upgrades[0].upgrade[mod]}\n`
+    }
+    return template
+  }
+
+  is_upgradable() {
+    return this.stats.upgrades.length > 0;
+  }
+
+  get_upgrade_cost() {
+    if (!this.stats.upgrades.length) return -1;
+    return this.stats.upgrades[0].cost;
+  }
+
+  upgrade () {
+    this.stats = {...this.stats, ...this.stats.upgrades.shift().upgrade}
+  }
+
   set_stats(stats) {
-    this.stats = stats;
+    this.stats = {...this.stats, ...stats};
   }
 }
 
@@ -145,6 +190,7 @@ class Base extends GameObject {
     super(position, cell_size);
     this.radius = 25;
     this.health = 3;
+    this.max_health = 3;
   }
 
   render() {

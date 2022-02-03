@@ -7,8 +7,8 @@ class Component {
       return {...this.state}
     }
 
-    set_state (value) {
-      this.state = value
+    set_state (new_state) {
+      this.state = {...this.state, ...new_state}
     }
 
     render (state) {

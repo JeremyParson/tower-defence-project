@@ -68,13 +68,26 @@
     .scroll {
         padding-right: 17px; /* Increase/decrease this value for cross-browser compatibility */
         box-sizing: content-box; /* So the width will be 100% + 17px */
-        -ms-overflow-style: none
+        -ms-overflow-style: none;
         overflow-y: scroll;
-        ;
     }
 
-    .example::-webkit-scrollbar {
+    .scroll::-webkit-scrollbar {
         display: none;
+    }
+
+    .scroll::-webkit-scrollbar-track {
+        background: rgb(16, 0, 31); 
+    }
+ 
+    /* Handle */
+    .scroll::-webkit-scrollbar-thumb {
+        background: rgb(16, 0, 31); 
+    }
+
+    /* Handle on hover */
+    .scroll::-webkit-scrollbar-thumb:hover {
+        background: rgb(16, 0, 31); 
     }
 </style>
 <!-- Math -->

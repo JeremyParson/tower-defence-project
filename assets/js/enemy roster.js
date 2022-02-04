@@ -32,7 +32,7 @@ let enemy_roster_data = [
     difficulty: 6,
     cost: 125,
     health: 3,
-    damage: 2,
+    damage: 1,
     speed: 0.05,
     points: 50,
     shape: {
@@ -46,8 +46,8 @@ let enemy_roster_data = [
     difficulty: 10,
     cost: 200,
     health: 15,
-    damage: 15,
-    speed: 0.025,
+    damage: 1,
+    speed: 0.035,
     points: 100,
     shape: {
       type: "square",

@@ -88,7 +88,7 @@ class Bullet extends GameObject {
       this.move_speed
     );
 
-    if (distance < 0.1) {
+    if (distance < 0.3) {
       this.target_hit = true;
       this.target.hit(this.damage);
     }

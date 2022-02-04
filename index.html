@@ -13,18 +13,21 @@
 
 <body>
     <div id="app"></div>
+    
 </body>
 
 <style>
     body {
-        background-color: #1d2951;
+        background-color: rgb(16, 0, 31);
+        color: rgb(0, 166, 108);
     }
 
     #app {
         display: flex;
         flex-direction: row;
         width: 99%;
-        height: 98vh;
+        height: 80vh;
+        overflow: hidden;
     }
 
     #game-canvas {
@@ -59,16 +62,19 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        background-color: #172141;
         flex-grow: .3;
     }
 
-    .sidebar {
-        background-color: #1d2951;
+    .scroll {
+        padding-right: 17px; /* Increase/decrease this value for cross-browser compatibility */
+        box-sizing: content-box; /* So the width will be 100% + 17px */
+        -ms-overflow-style: none
+        overflow-y: scroll;
+        ;
     }
 
-    .scroll {
-        overflow-y: scroll;
+    .example::-webkit-scrollbar {
+        display: none;
     }
 </style>
 <!-- Math -->

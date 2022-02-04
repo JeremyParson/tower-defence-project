@@ -78,15 +78,15 @@ class Grid {
       for (let y in this.grid[x]) {
         let cell_draw_position = vect_mult([x, y], this.cell_size);
         // render path cell
-        fill(this.grid[x][y] != -1 ? 255 : 0);
+        fill(...this.grid[x][y] != -1 ? [74, 0, 69] : [0, 0, 0]);
         rect(
           cell_draw_position[0],
           cell_draw_position[1],
           this.cell_size[0],
           this.cell_size[1]
         );
-        // render text
-        fill(255, 0, 0);
+        // // render text
+        // fill(255, 0, 0);
         text(
           this.grid[x][y],
           cell_draw_position[0],

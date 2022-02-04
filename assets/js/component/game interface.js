@@ -40,7 +40,7 @@ class MainMenuComponent extends Component {
 
   render(state) {
     return `<div id="main-menu">
-        <h1>Play Tower Defence</h1>
+        <img src="assets/gfx/x.png">
         <button onclick="start_game()">Start</button>
     </div>`;
   }
@@ -63,7 +63,6 @@ class ShopComponent extends Component {
       template += `<div>
                 <h2>${tower_name}</h2>
                 <p>Cost: ${tower.cost}</p>
-                <p>Health: ${tower.health}</p>
                 <p>Damage: ${tower.damage}</p>
                 <p>Range: ${tower.range}</p>
                 <p>Cool Down: ${tower.cool_down / 1000} second${

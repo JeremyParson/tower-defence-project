@@ -25,7 +25,7 @@ spawn_positions.map((position) => enemies.add_spawn_position(position));
 enemies.set_base_position(base_position);
 
 // tracks the number of points earned
-let points = 800;
+let points = 500;
 const get_game_stats = (base) => {
   return { health: base.health, max_health: base.max_health };
 };
@@ -77,7 +77,7 @@ const p5GameInstance = (p) => {
     if (prev_time - wave_time >= 1000) {
       prev_time = wave_time
     }
-    background(0);
+    background(16, 0, 31);
     gameGrid.render();
     shoot_enemies(enemies.get_enemies());
     enemies.move(gameGrid);
@@ -108,7 +108,7 @@ const p5GameInstance = (p) => {
     let new_game_stats = get_game_stats(base)
     game_component.set_state(new_game_stats)
     app.updateView()
-    // if (base.health <= 0) end_game();
+    if (base.health <= 0) end_game();
   };
 
   p.mousePressed = () => {
@@ -144,6 +144,7 @@ async function start_wave () {
 
   // update interface to indicate that the wave has started
   base_upgrade_component.set_state({started: true})
+  app.removeComponent("shop_component")
   app.updateView()
   // start the wave
   enemies.generate_next_wave();
@@ -158,6 +159,7 @@ async function start_wave () {
 
   // update interface to display next wave button
   base_upgrade_component.set_state({wave: wave_number, started: false})
+  app.registerFirst(shop_component)
   app.updateView()
   is_wave_started = false
 }
